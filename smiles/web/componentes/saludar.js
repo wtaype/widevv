@@ -6,7 +6,7 @@ const COLOR = '#F97316';
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
 export const wi = {
-  id:'saludar', fn:Saludar, nom:'Saludo Dinamico', icon:'fa-hand-wave', color:COLOR,
+  id:'saludar', fn:Saludar, nom:'Saludo Dinamico', icon:'fa-hand-spock', color:COLOR,
   desc:'Devuelve el saludo correcto segun la hora del dia. Buenos dias, tardes o noches automatico.',
   code:`const saludo = Saludar();\n// "Buenos días, " / "Buenas tardes, " / "Buenas noches, "`,
   demo:() => `<div class="cp_demo_row">
