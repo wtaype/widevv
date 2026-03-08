@@ -9,7 +9,7 @@ const WI = [wicode]; // ← Actualizar línea 2 = [wivista]
 const compSide = w => `
   <a href="#cp_${w.id}" class="cp_side_item" data-id="${w.id}" style="--cc:${w.color}">
     <i class="fas ${w.icon}"></i>
-    <span>${w.nom}</span>
+    <span>${w.fn.name}</span>
     <span class="cp_side_ver">v${w.fn.v}</span>
   </a>`;
 
@@ -17,7 +17,7 @@ const compCard = w => `
   <section class="cp_card" id="cp_${w.id}" style="--cc:${w.color}" data-nom="${w.nom.toLowerCase()} ${w.id}">
     <div class="cp_card_head">
       <div class="cp_card_ico"><i class="fas ${w.icon}"></i></div>
-      <div class="cp_card_info"><h3>${w.nom}</h3><span class="cp_badge">v${w.fn.v}</span></div>
+      <div class="cp_card_info"><h3>${w.fn.name}</h3><span class="cp_badge">v${w.fn.v}</span></div>
       <a href="/${w.id}" class="cp_card_ver">Ver docs <i class="fas fa-arrow-right"></i></a>
     </div>
     <p class="cp_card_desc">${w.desc}</p>

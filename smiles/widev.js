@@ -3,10 +3,7 @@ import $  from 'jquery';
 // wiCode v1.0 - Bloque de código con copy + highlight __________________________
 export const wiCode = (sel) => {
   $(sel).each(function() {
-    const $pre = $(this);
-    const $btn = $('<button class="wiCode-copy"><i class="fas fa-copy"></i></button>');
-    $pre.wrap('<div class="wiCode-box"/>').parent().append($btn);
-    $btn.on('click', () => wicopy($pre.text(), $btn, '¡Copiado!'));
+    $(this).wrap('<div class="wiCode-box"/>');
   });
 };wiCode.v = '10.1';
 
