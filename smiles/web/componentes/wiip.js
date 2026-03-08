@@ -19,7 +19,7 @@ const secciones = [
   { id:'basico', titulo:'Obtener IP',
     desc:'Sin argumentos devuelve la IP publica del usuario. El resultado se cachea en localStorage 1 hora.',
     html:``,
-    js:`import { wiIp } from './widev.js';\n\nconst data = await wiIp();\nconsole.log(data.query);   // IP: '190.123.45.67'\nconsole.log(data.country); // 'Peru'\nconsole.log(data.city);    // 'Lima'`,
+    js:`import { wiIp } from './widev.js';\n\nconst data = await wiIp();\nconsole.log(data.query);   // IP: '142.250.80.46'\nconsole.log(data.country); // 'United States'\nconsole.log(data.city);    // 'Mountain View'`,
     demo:() => `<div class="wip_demo">
       <div class="wip_row"><code>data.query</code> → IP publica</div>
       <div class="wip_row"><code>data.country</code> → pais</div>
@@ -28,7 +28,7 @@ const secciones = [
   { id:'geolocalizacion', titulo:'Con geolocalizacion',
     desc:'Pasa true para obtener los datos geograficos completos: pais, ciudad, latitud, longitud, zona horaria, etc.',
     html:``,
-    js:`import { wiIp } from './widev.js';\n\nconst geo = await wiIp(true);\n\nconsole.log(geo.country);  // 'Peru'\nconsole.log(geo.city);     // 'Lima'\nconsole.log(geo.lat);      // -12.046374\nconsole.log(geo.lon);      // -77.042793\nconsole.log(geo.timezone); // 'America/Lima'`,
+    js:`import { wiIp } from './widev.js';\n\nconst geo = await wiIp(true);\n\nconsole.log(geo.country);  // 'United States'\nconsole.log(geo.city);     // 'Mountain View'\nconsole.log(geo.lat);      // 37.422\nconsole.log(geo.lon);      // -122.084\nconsole.log(geo.timezone); // 'America/Los_Angeles'`,
     demo:() => `<div class="wip_demo">
       <div class="wip_row"><code>geo.lat / geo.lon</code> → coordenadas</div>
       <div class="wip_row"><code>geo.timezone</code> → zona horaria</div>
