@@ -8,7 +8,7 @@ export const wiCode = (sel) => {
     $pre.wrap('<div class="wiCode-box"/>').parent().append($btn);
     $btn.on('click', () => wicopy($pre.text(), $btn, '¡Copiado!'));
   });
-};
+};wiCode.v = '10.1';
 
 // OBSERVER v12_________________________________
 export const wiVista = (sel, fn, opts = {}) => {
@@ -33,6 +33,20 @@ export const wiSpin = (btn, act = true, txt = '') => {
   } else {
     $btn.prop('disabled', false).text($btn.data('txt') || txt || 'Continuar');
   }
+};
+
+// SCROLL SPY V10.0_________________________________
+export const wiScroll = (ids, navSel, opts = {}) => {
+  const { margin = '-20% 0px -70% 0px', cls = 'active' } = opts;
+  const obs = new IntersectionObserver(
+    es => es.filter(e => e.isIntersecting).forEach(e => {
+      $(navSel).removeClass(cls);
+      $(`${navSel}[href="#${e.target.id}"]`).addClass(cls);
+    }),
+    { rootMargin: margin }
+  );
+  ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  return obs;
 };
 
 // AUTH SIGNAL v2.0_________________________________
