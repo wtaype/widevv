@@ -1,3 +1,4 @@
+import './modales.css';
 import $ from 'jquery';
 import { wiVista, wiCode, wiTip, wiSpin, abrirModal, cerrarModal, cerrarTodos, Notificacion, Mensaje, wicopy } from '../widev.js';
 import { app, version } from '../wii.js';
@@ -220,7 +221,6 @@ const tplApi = f => `
 
 // ── RENDER ────────────────────────────────────────────────────
 export const render = () => `
-<link rel="stylesheet" href="./smiles/web/modales.css">
 <div class="mod_wrap">
 
   <header class="mod_header">

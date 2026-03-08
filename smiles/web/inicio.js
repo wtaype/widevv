@@ -1,3 +1,4 @@
+import './inicio.css';
 import $ from 'jquery';
 import { app, version, autor, linkme } from '../wii.js';
 import { wiVista, year, wiTip, Saludar } from '../widev.js';
@@ -114,7 +115,6 @@ const tplBeneficio = (b, i) => `
 
 // ── RENDER ────────────────────────────────────────────────────
 export const render = () => `
-<link rel="stylesheet" href="./smiles/web/inicio.css">
 <div class="ini_wrap">
 
   <!-- ===== HERO ===== -->

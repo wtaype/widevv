@@ -1,3 +1,4 @@
+import './guias.css';
 import $ from 'jquery';
 import { wiVista, wiCode, wicopy } from '../widev.js';
 import { app, version } from '../wii.js';
@@ -262,7 +263,6 @@ const tplSection = s => {
 
 // ── RENDER ────────────────────────────────────────────────────
 export const render = () => `
-<link rel="stylesheet" href="./smiles/web/guias.css">
 <div class="gu_wrap">
 
   <header class="gu_header">

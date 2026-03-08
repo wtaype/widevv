@@ -1,3 +1,4 @@
+import './utilidades.css';
 import $ from 'jquery';
 import { wiVista, wiCode, wicopy } from '../widev.js';
 import { app, version } from '../wii.js';
@@ -129,7 +130,6 @@ const tplCat = c => {
 
 // ── RENDER ────────────────────────────────────────────────────
 export const render = () => `
-<link rel="stylesheet" href="./smiles/web/utilidades.css">
 <div class="ut_wrap">
 
   <header class="ut_header">

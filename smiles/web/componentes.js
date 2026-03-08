@@ -1,3 +1,4 @@
+import './componentes.css';
 import $ from 'jquery';
 import { wiVista, wiCode, Notificacion, Mensaje, wiTip, wiSpin, abrirModal, cerrarTodos, wicopy } from '../widev.js';
 import { app, version } from '../wii.js';
@@ -100,7 +101,6 @@ const tplNav = c => `<a href="#cp_${c.id}" class="cp_nav_item" style="--cc:${c.c
 
 // ── RENDER ────────────────────────────────────────────────────
 export const render = () => `
-<link rel="stylesheet" href="./smiles/web/componentes.css">
 <div class="cp_wrap">
 
   <section class="cp_hero">

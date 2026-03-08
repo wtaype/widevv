@@ -1,3 +1,4 @@
+import './acerca.css';
 import $ from 'jquery';
 import { wiVista, wicopy } from '../widev.js';
 import { app, version, autor, linkme, lanzamiento } from '../wii.js';
@@ -79,7 +80,6 @@ const tplVersion = v => `
 
 // ── RENDER ────────────────────────────────────────────────────
 export const render = () => `
-<link rel="stylesheet" href="./smiles/web/acerca.css">
 <div class="ac_wrap">
 
   <header class="ac_header">
