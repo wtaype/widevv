@@ -1,0 +1,540 @@
+/* =====================================================
+   COMPONENTES.CSS — Widev Componentes UI
+   1.  Base & Wrap
+   2.  Hero
+   3.  Nav chips
+   4.  Grid & Cards
+   5.  Card header & badge
+   6.  Demo area
+   7.  Code blocks (Prism override)
+   8.  Botones demo
+   9.  Animaciones demo
+   10. Copiar demo
+   11. CTA final
+   12. Responsive
+===================================================== */
+
+
+/* ── 1. BASE ──────────────────────────────────────── */
+.cp_wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
+
+/* ── 2. HERO ──────────────────────────────────────── */
+.cp_hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4vh;
+  padding: 6vh 0 4vh;
+}
+
+.cp_hero_tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .6vh;
+  padding: .6vh 1.5vh;
+  background: var(--bg4);
+  border: 1px solid var(--brd);
+  border-radius: 5vh;
+  font-size: var(--fz_s4);
+  font-weight: 600;
+  color: var(--mco);
+  margin-bottom: 1.5vh;
+}
+
+.cp_hero_tit {
+  font-size: var(--fz_x2);
+  font-weight: 800;
+  color: var(--tx);
+  line-height: 1.15;
+  margin-bottom: 1.5vh;
+}
+
+.cp_grad {
+  background: linear-gradient(135deg, var(--mco), var(--hv));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cp_hero_sub {
+  font-size: var(--fz_m3);
+  color: var(--tx2);
+  max-width: 50ch;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cp_hero_count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 14vh;
+  height: 14vh;
+  background: var(--bg4);
+  border: 2px solid var(--brd);
+  border-radius: 50%;
+  transition: all var(--tr_m);
+}
+
+.cp_hero_count:hover {
+  transform: scale(1.06);
+  border-color: var(--mco);
+  box-shadow: 0 0 3vh var(--bg5);
+}
+
+.cp_count_n {
+  font-size: var(--fz_x3);
+  font-weight: 900;
+  color: var(--mco);
+  line-height: 1;
+}
+
+.cp_count_l {
+  font-size: var(--fz_s4);
+  color: var(--tx2);
+  font-weight: 500;
+}
+
+
+/* ── 3. NAV CHIPS ─────────────────────────────────── */
+.cp_nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8vh;
+  padding: 2vh 0 4vh;
+  position: sticky;
+  top: 5vh;
+  z-index: 10;
+  background: linear-gradient(180deg, var(--bg) 70%, transparent);
+  padding-bottom: 3vh;
+}
+
+.cp_nav_item {
+  display: inline-flex;
+  align-items: center;
+  gap: .5vh;
+  padding: .7vh 1.4vh;
+  background: var(--wb);
+  border: 1px solid var(--brd);
+  border-radius: .8vh;
+  font-size: var(--fz_s4);
+  font-weight: 500;
+  color: var(--tx2);
+  transition: all var(--tr_f);
+  text-decoration: none;
+}
+
+.cp_nav_item i {
+  color: var(--cc);
+  font-size: var(--fz_m1);
+  transition: transform var(--tr_f);
+}
+
+.cp_nav_item:hover {
+  background: var(--bg5);
+  border-color: var(--cc);
+  color: var(--tx);
+  transform: translateY(-.2vh);
+  box-shadow: 0 .3vh .8vh rgba(0,0,0,.08);
+}
+
+.cp_nav_item:hover i {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+
+/* ── 4. GRID & CARDS ──────────────────────────────── */
+.cp_grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+.cp_card {
+  background: var(--wb);
+  border: 1px solid var(--brd);
+  border-radius: 1.2vh;
+  padding: 3vh;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--tr_m);
+}
+
+.cp_card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cc), transparent);
+  opacity: 0;
+  transition: opacity var(--tr_m);
+}
+
+.cp_card:hover {
+  border-color: var(--cc);
+  box-shadow: 0 .8vh 2.5vh rgba(0,0,0,.08);
+  transform: translateY(-.3vh);
+}
+
+.cp_card:hover::before {
+  opacity: 1;
+}
+
+
+/* ── 5. CARD HEADER & BADGE ───────────────────────── */
+.cp_card_head {
+  display: flex;
+  align-items: center;
+  gap: 1.5vh;
+  margin-bottom: 1.5vh;
+}
+
+.cp_card_ico {
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1vh;
+  background: color-mix(in srgb, var(--cc) 15%, var(--bg));
+  color: var(--cc);
+  font-size: var(--fz_l1);
+  transition: all var(--tr_m);
+  flex-shrink: 0;
+}
+
+.cp_card:hover .cp_card_ico {
+  background: var(--cc);
+  color: #fff;
+  transform: scale(1.08) rotate(-5deg);
+}
+
+.cp_card_info {
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  flex: 1;
+}
+
+.cp_card_info h3 {
+  font-size: var(--fz_m5);
+  font-weight: 700;
+  color: var(--tx);
+  margin: 0;
+}
+
+.cp_badge {
+  display: inline-flex;
+  padding: .3vh .8vh;
+  background: var(--bg4);
+  border: 1px solid var(--brd);
+  border-radius: 4vh;
+  font-size: var(--fz_s1);
+  font-weight: 600;
+  color: var(--mco);
+  letter-spacing: .5px;
+}
+
+.cp_card_desc {
+  font-size: var(--fz_m2);
+  color: var(--tx2);
+  line-height: 1.5;
+  margin-bottom: 2vh;
+}
+
+
+/* ── 6. DEMO AREA ─────────────────────────────────── */
+.cp_demo {
+  padding: 2vh;
+  background: var(--bg);
+  border: 1px dashed var(--brd);
+  border-radius: .8vh;
+  margin-bottom: 2vh;
+  min-height: 5vh;
+  display: flex;
+  align-items: center;
+}
+
+.cp_demo_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vh;
+  align-items: center;
+  width: 100%;
+}
+
+
+/* ── 7. CODE BLOCKS (Prism override) ──────────────── */
+.cp_code_wrap {
+  border-radius: .8vh;
+  overflow: hidden;
+  border: 1px solid var(--brd);
+}
+
+.cp_code_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .8vh 1.5vh;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--brd);
+  font-size: var(--fz_s3);
+  font-weight: 600;
+  color: var(--tx2);
+}
+
+.cp_code_head i {
+  color: var(--mco);
+  margin-right: .4vh;
+}
+
+.cp_lang {
+  padding: .2vh .7vh;
+  background: var(--bg4);
+  border-radius: .4vh;
+  font-size: var(--fz_s1);
+  font-weight: 700;
+  color: var(--mco);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cp_code_wrap pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+.cp_code_wrap pre code {
+  font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace !important;
+  font-size: var(--fz_s4) !important;
+  line-height: 1.7 !important;
+  tab-size: 2;
+}
+
+/* Prism theme overrides para adaptarse a los temas Widev */
+.cp_code_wrap pre[class*="language-"],
+.cp_code_wrap code[class*="language-"] {
+  background: var(--bg3) !important;
+  color: var(--tx) !important;
+  text-shadow: none !important;
+}
+
+.cp_code_wrap .token.comment    { color: var(--tx3) !important; font-style: italic; }
+.cp_code_wrap .token.string     { color: var(--Paz) !important; }
+.cp_code_wrap .token.keyword    { color: var(--Mora) !important; font-weight: 600; }
+.cp_code_wrap .token.function   { color: var(--Cielo) !important; }
+.cp_code_wrap .token.number     { color: var(--Dulce) !important; }
+.cp_code_wrap .token.operator   { color: var(--mco) !important; }
+.cp_code_wrap .token.punctuation{ color: var(--tx2) !important; }
+
+/* wiCode copy button */
+.wiCode-box {
+  position: relative;
+}
+
+.wiCode-copy {
+  position: absolute;
+  top: .8vh;
+  right: .8vh;
+  padding: .5vh .8vh !important;
+  background: var(--bg4) !important;
+  border: 1px solid var(--brd) !important;
+  border-radius: .5vh !important;
+  color: var(--tx3) !important;
+  font-size: var(--fz_s3) !important;
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--tr_f);
+}
+
+.wiCode-box:hover .wiCode-copy {
+  opacity: 1;
+}
+
+.wiCode-copy:hover {
+  background: var(--mco) !important;
+  color: var(--txa) !important;
+  border-color: var(--mco) !important;
+  transform: scale(1.05);
+}
+
+
+/* ── 8. BOTONES DEMO ──────────────────────────────── */
+.cp_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5vh;
+  padding: .8vh 1.5vh;
+  background: var(--wb);
+  border: 1px solid var(--brd);
+  border-radius: .6vh;
+  color: var(--tx);
+  font-size: var(--fz_s4);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--tr_f);
+}
+
+.cp_btn:hover {
+  background: var(--mco);
+  color: var(--txa);
+  border-color: var(--mco);
+  transform: translateY(-.2vh);
+  box-shadow: 0 .3vh .8vh rgba(0,0,0,.12);
+}
+
+.cp_btn:hover i {
+  color: var(--txa);
+}
+
+.cp_btn i {
+  font-size: var(--fz_m1);
+  color: var(--mco);
+  transition: color var(--tr_f);
+}
+
+
+/* ── 9. ANIMACIONES DEMO ──────────────────────────── */
+.cp_anim_row {
+  gap: 1.5vh !important;
+}
+
+.cp_anim_box {
+  padding: 1.5vh 2.5vh;
+  background: linear-gradient(135deg, var(--bg4), var(--bg5));
+  border: 1px solid var(--brd);
+  border-radius: .8vh;
+  color: var(--tx);
+  font-size: var(--fz_m1);
+  font-weight: 600;
+  text-align: center;
+  transition: all .6s cubic-bezier(.4,0,.2,1);
+}
+
+
+/* ── 10. COPIAR DEMO ──────────────────────────────── */
+.cp_copy_txt {
+  padding: .8vh 1.5vh;
+  background: var(--bg3);
+  border: 1px solid var(--brd);
+  border-radius: .6vh;
+  font-family: 'Fira Code', monospace;
+  font-size: var(--fz_m1);
+  color: var(--mco);
+  user-select: all;
+}
+
+.cp_demo_code_preview pre {
+  margin: 0;
+}
+
+
+/* ── 11. CTA FINAL ────────────────────────────────── */
+.cp_cta {
+  text-align: center;
+  padding: 6vh 2vh;
+  margin: 4vh 0;
+  background: var(--wb);
+  border: 1px solid var(--brd);
+  border-radius: 1.2vh;
+}
+
+.cp_cta_ico {
+  font-size: var(--fz_x2);
+  color: var(--mco);
+  margin-bottom: 1.5vh;
+  display: block;
+  animation: cp_float 3s ease-in-out infinite;
+}
+
+@keyframes cp_float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1vh); }
+}
+
+.cp_cta h2 {
+  font-size: var(--fz_l2);
+  font-weight: 800;
+  color: var(--tx);
+  margin-bottom: 1vh;
+}
+
+.cp_cta p {
+  font-size: var(--fz_m2);
+  color: var(--tx2);
+  margin-bottom: 2vh;
+}
+
+.cp_cta_code {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+
+/* ── 12. RESPONSIVE ───────────────────────────────── */
+@media (max-width: 768px) {
+  .cp_hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 2vh;
+    padding: 3vh 0;
+  }
+
+  .cp_hero_sub { max-width: 100%; }
+
+  .cp_hero_count {
+    min-width: 10vh;
+    height: 10vh;
+  }
+
+  .cp_count_n { font-size: var(--fz_x1); }
+
+  .cp_nav {
+    position: relative;
+    top: auto;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 1.5vh 0 2vh;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .cp_nav::-webkit-scrollbar { display: none; }
+
+  .cp_nav_item {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .cp_card {
+    padding: 2vh;
+  }
+
+  .cp_demo_row {
+    flex-direction: column;
+  }
+
+  .cp_btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cp_anim_row {
+    flex-direction: row !important;
+  }
+
+  .cp_anim_box {
+    padding: 1vh 1.5vh;
+    font-size: var(--fz_s4);
+  }
+}
