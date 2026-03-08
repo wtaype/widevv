@@ -3,7 +3,7 @@ import { getls, wiSmart} from './widev.js';
 import { rutas } from './rutas/ruta.js';
 
 ['inicio','componentes','utilidades','modales','guias','acerca'].forEach(pg => rutas.register(`/${pg}`, () => import(`./web/${pg}.js`)));
-['wicode','wivista','wispin','notificacion','mensaje','witip','wimodal','wicopy'].forEach(pg => rutas.register(`/${pg}`, () => import(`./web/componentes/${pg}.js`)));
+['wicode','wivista','wispin','wiscroll','wiauth','wismart','saludar','notificacion','mensaje','savels','getls','removels','witip','wiip','widate','wicopy','wisuma'].forEach(pg => rutas.register(`/${pg}`, () => import(`./web/componentes/${pg}.js`)));
 ['descubre','login','smile'].forEach(pg => rutas.register(`/${pg}`, () => import(`./smile/${pg}.js`)));
 import('./header.js'); import('./footer.js')
 rutas.init();

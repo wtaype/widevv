@@ -2,8 +2,25 @@ import './componentes.css';
 import $ from 'jquery';
 import { wiVista } from '../widev.js';
 
-import { wi as wicode } from './componentes/wicode.js'; // ← Actualizar línea 1 = (wi as wivista componentes/wivista.js') 
-const WI = [wicode]; // ← Actualizar línea 2 = [wivista]
+import { wi as wicode }       from './componentes/wicode.js';
+import { wi as wivista }      from './componentes/wivista.js';
+import { wi as wispin }       from './componentes/wispin.js';
+import { wi as wiscroll }     from './componentes/wiscroll.js';
+import { wi as wiauth }       from './componentes/wiauth.js';
+import { wi as wismart }      from './componentes/wismart.js';
+import { wi as saludar }      from './componentes/saludar.js';
+import { wi as notificacion } from './componentes/notificacion.js';
+import { wi as mensaje }      from './componentes/mensaje.js';
+import { wi as savels }       from './componentes/savels.js';
+import { wi as getls }        from './componentes/getls.js';
+import { wi as removels }     from './componentes/removels.js';
+import { wi as witip }        from './componentes/witip.js';
+import { wi as wiip }         from './componentes/wiip.js';
+import { wi as widate }       from './componentes/widate.js';
+import { wi as wicopy }       from './componentes/wicopy.js';
+import { wi as wisuma }       from './componentes/wisuma.js';
+
+const WI = [wicode,wivista,wispin,wiscroll,wiauth,wismart,saludar,notificacion,mensaje,savels,getls,removels,witip,wiip,widate,wicopy,wisuma];
 
 
 const compSide = w => `
