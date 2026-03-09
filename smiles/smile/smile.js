@@ -3,6 +3,7 @@ import $ from 'jquery';
 import { auth, db } from './firebase.js';
 import { collection, setDoc, doc, query, where, onSnapshot, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import { Notificacion, wicopy, wiTip, getls, Saludar } from '../widev.js';
+import { rutas } from '../rutas/ruta.js';
 import { app } from '../wii.js';
 
 // ============================================================
@@ -18,7 +19,9 @@ const _cache = () => { try { return JSON.parse(localStorage.getItem(CACHE) || '[
 // PARTE 2 · RENDER
 // ============================================================
 export const render = () => {
-  const { nombre = '', usuario = '', email = '' } = wi();
+  const u = wi();
+  if (!u.email) { location.replace('/'); return ''; }
+  const { nombre = '', usuario = '', email = '' } = u;
   const display = nombre || usuario || email || auth.currentUser?.email || '';
 
   return `
@@ -73,14 +76,10 @@ export const render = () => {
 // PARTE 3 · LÓGICA: INIT · EVENTOS · FIRESTORE · HELPERS
 // ============================================================
 export const init = () => {
-  const { email } = wi();
+  const u = wi();
+  if (!u.email) return rutas.navigate('/');
 
-  // Usar wiSmile.email primero, luego auth como fallback
-  const userEmail = email || auth.currentUser?.email;
-  if (!userEmail) {
-    Notificacion('Inicia sesión primero', 'error');
-    return (window.location.hash = '#/auth?mode=login');
-  }
+  const userEmail = u.email || auth.currentUser?.email;
 
   // ── EVENTOS ──
   $(document)

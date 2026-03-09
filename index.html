@@ -186,7 +186,7 @@
 *{font-family:var(--ff_P);scrollbar-width:thin;scrollbar-color:var(--mco) var(--bg)}
 a{text-decoration:none}
 body{background: var(--bg);}
-#wimain{max-width:95vw;margin:auto;padding:2vh .6vh;min-height:100vh;}
+#wimain{max-width:95vw;margin:auto;padding:1vh .6vh;min-height:100vh;}
 
 /* ==================== ESTILOS ESENCIALES HTML ==================== */
 p{color:var(--tx);font-size:var(--fz_m2);line-height:1.6;margin-bottom:1vh}
@@ -233,7 +233,7 @@ blockquote{padding:1.5vh 2vh;margin:2vh 0;background:var(--bg4);border-left:4px 
 #wiTema:hover{transform:translateY(-0.2vh);transition:var(--tr_m)}
 
 /* ==================== HEADER - FOOTER ==================== */
-.wiheader{height:5vh;display:flex;justify-content:space-between;align-items:center;padding:0 2vw;backdrop-filter:blur(8px);z-index:100;position:fixed;width:100%;}
+.wiheader{height:5vh;display:flex;justify-content:space-between;align-items:center;padding:0 2vw;backdrop-filter:blur(8px);z-index:100;position:sticky;top:0;width:100%;}
 .nv_left{display:flex;align-items:center;gap:2vh}
 .wiheader i:not(.active){color:var(--mco)}
 .wilogo{display:flex;align-items:center;gap:0.3vh;font-size:var(--fz_m5);font-weight:700;color:var(--bg2);cursor:pointer;transition:all var(--tr_f)}
@@ -241,20 +241,12 @@ blockquote{padding:1.5vh 2vh;margin:2vh 0;background:var(--bg4);border-left:4px 
 .wilogo i{font-size:var(--fz_l1)}
 .wilogo:hover{transform:scale(1.05);filter:drop-shadow(0 0 0.5vh var(--mco))}
 .winav{display:flex;gap:.3vh}
-.nv_item, .wibtn_auth{display:flex;align-items:center;gap:0.4vw;padding:0.7vh 1vw;background:var(--bg1);border-radius:0.8vh;color:var(--tx);text-decoration:none;font-size:var(--fz_m1);font-weight:500;transition:all var(--tr_f);border:1px solid transparent;box-shadow:0.2vh 0 0.3vh rgb(0 0 0 / 5%);}
+.nv_item{display:flex;align-items:center;gap:0.4vw;padding:0.7vh 1vw;background:var(--bg1);border-radius:0.8vh;color:var(--tx);text-decoration:none;font-size:var(--fz_m1);font-weight:500;transition:all var(--tr_f);border:1px solid transparent;box-shadow:0.2vh 0 0.3vh rgb(0 0 0 / 5%);}
+.nv_item img{height:2vh;border-radius:50%;object-fit:cover}
 .nv_item i{font-size:var(--fz_m3)}
 .nv_item.active, .nv_item:hover{background:var(--mco);color:var(--txa);transition: background .99s ease-out, color .3s ease-out;font-weight: 600;box-shadow:0.2vh 0 0.3vh rgb(0 0 0 / 10%)}
 .nv_item.active i, .nv_item:hover i{color:var(--txa);transition: color .6s ease-out}
 .nv_right{display:flex;align-items:center;gap:.5vh}
-.wibtn_auth:hover, .wibtn_auth:hover i{cursor: pointer;}
-.wiauth{display:flex;gap:.5vh;min-width:13.9vw}
-.sesion img{max-width:2.5vh}
-.sesion{display:flex;align-items:center;gap:.8vh;cursor:pointer;background:var(--bg1);border-radius:1.2vh;padding:0.7vh 1vw;font-size:var(--fz_m2);}
-.sesion:hover{transform:translateY(-.2vh);transition:var(--tr_s)}
-.sesion span,.bt_salir span,.bt_salir i{color:var(--tx)}
-.user-avatar{height:80%;box-shadow:var(--bs_m);border-radius:50%}
-.bt_salir{background:var(--bg1);border-radius:1.2vh;border:none;padding:0.7vh 1vw;cursor:pointer}
-.bt_salir:hover{transform:translateY(-.2vh);transition:var(--tr_s);color: var(--txa);}
 .foo{width:100%;text-align:center;padding-block:1.5vh 1vh;background:var(--wb);border-radius:1vh 1vh 0 0}
 .foo *{font-size:var(--fz_s2);margin-inline:.3vh;color:var(--tx);}
 
@@ -306,7 +298,7 @@ blockquote{padding:1.5vh 2vh;margin:2vh 0;background:var(--bg4);border-left:4px 
       </a>
     </nav>
   </div><!--LEFT: Logo+Navegación-->
-  <div class="nv_right"><div class="wiauth"></div><!--RIGHT: Auth+Navegación-->  
+  <div class="nv_right"></div><!--RIGHT: Auth+Navegación-->  
   <div class="wimenu dpn"><i class="fas fa-bars"></i></div>
 </header>
 <main id="wimain"></main>

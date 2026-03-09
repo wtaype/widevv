@@ -52,7 +52,7 @@ export const wiAuth = Object.assign((load, render) => bus.add(async () => { awai
   on(fn)   { bus.add(fn); },
   emit(wi) { bus.forEach(fn => { try { fn(wi); } catch(e) { console.error('wiAuth:', e); } }); },
   login(wi, h = 24) { savels('wiSmile', wi, h); this.emit(wi); },
-  logout() { const k = ['wiflash','wiTema'].map(c => [c, localStorage.getItem(c)]); localStorage.clear(); k.forEach(([c, v]) => v && localStorage.setItem(c, v)); this.emit(null); },
+  logout(keep = []) { removels.except(keep); this.emit(null); },
   get user() { return getls('wiSmile'); },
   get logged() { return !!this.user?.usuario; }
 });wiAuth.v = '10.1';
@@ -118,11 +118,16 @@ export function getls(clave) {
   } catch(e) { console.error('egt:', e); localStorage.removeItem(clave); return null; }
 }getls.v = '10.1';
 
-// REMOVE LOCAL v10.2_________________________________
+// REMOVE LOCAL v10.3_________________________________
 export function removels(...claves) {
   claves.flat().flatMap(c => typeof c === 'string' ? c.split(/[,\s]+/).filter(Boolean) : c)
     .forEach(clave => localStorage.removeItem(clave));
-}removels.v = '10.1';
+}
+removels.except = (keep = []) => {
+  const saved = keep.map(k => [k, localStorage.getItem(k)]);
+  localStorage.clear();
+  saved.forEach(([k, v]) => v !== null && localStorage.setItem(k, v));
+}; removels.v = '10.3';
 // TOOLTIP V11.0_________________________________
 export function wiTip(elmOrTxt, txt, tipo = 'top', tiempo = 1800) {
   if (!wiTip.CSS) {

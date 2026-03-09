@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfi
 import { setDoc, getDoc, getDocs, doc, collection, query, where, serverTimestamp } from 'firebase/firestore';
 import { wiTip, Mensaje, savels, getls, wiSpin } from '../widev.js';
 import { personal } from '../header.js';
+import { rutas } from '../rutas/ruta.js';
 
 export { auth, onAuthStateChanged, signOut };
 
@@ -41,10 +42,10 @@ const tpl = {
     ${campo('envelope','text','email','Email o usuario')}
     ${campo('lock','password','password','Contraseña',true)}
     <button type="button" id="Login" class="wilg_btn inactivo"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
-    <div class="wilg_links">
+    ${(restablecer==='si'||registrar==='si') ? `<div class="wilg_links">
       ${restablecer==='si' ? '<span class="wilg_rec">¿Olvidaste tu contraseña?</span>' : ''}
       ${registrar==='si'   ? '<span class="wilg_reg">Crear cuenta <i class="fas fa-arrow-right"></i></span>' : ''}
-    </div>`,
+    </div>` : ''}`,
 
   registrar: () => `
     <div class="wilg_head">
@@ -104,7 +105,7 @@ $(document)
     $(this).toggleClass('fa-eye fa-eye-slash');
   })
   .on('input.wi', '#email,#recEmail,#regEmail,#regUsuario', function () { $(this).val($(this).val().toLowerCase()); })
-  .on('click.wi', '.wilg_reg', () => mostrar('registrar'))
+  .on('click.wi', '.wilg_reg', () => registrar === 'si' && mostrar('registrar'))
   .on('click.wi', '.wilg_rec', () => mostrar('restablecer'))
   .on('click.wi', '.wilg_log', () => mostrar('login'))
   .on('input.wi keyup.wi', '#password',     e => { $('#Login').removeClass('inactivo');     e.key === 'Enter' && $('#Login').click(); })
@@ -132,7 +133,7 @@ $(document)
     try {
       await signInWithEmailAndPassword(auth, await correo(val('email')), val('password'));
       const wi = (await getDoc(doc(db, cfg.db, auth.currentUser.displayName || val('email')))).data();
-      await entrar(wi);
+      await entrar(wi); rutas.navigate('/smile');
     } catch (e) { Mensaje(err[e.code] || e.message, 'error'); }
     finally { wiSpin(this, false); }
   })
@@ -151,7 +152,7 @@ $(document)
       await Promise.all([updateProfile(user, { displayName: d.usuario }), sendEmailVerification(user)]);
       const wi = { usuario: d.usuario, email: d.email, nombre: d.nombre, apellidos: d.apellidos, rol: cfg.rol, uid: user.uid, terminos: true, tema: localStorage.wiTema };
       await setDoc(doc(db, cfg.db, d.usuario), { ...wi, creado: serverTimestamp() });
-      await entrar(wi); Mensaje('✅ Cuenta creada. Verifica tu email', 'success');
+      await entrar(wi); Mensaje('✅ Cuenta creada. Verifica tu email', 'success'); rutas.navigate('/smile');
     } catch (e) { Mensaje(err[e.code] || e.message, 'error'); }
     finally { wiSpin(this, false); }
   })
@@ -177,10 +178,12 @@ $(document)
   });
 
 // ==================== PUNTO DE ENTRADA ====================
-onAuthStateChanged(auth, async user => {
+const unsubAuth = onAuthStateChanged(auth, async user => {
   if (!user) return render();
   const wi = getls('wiSmile');
   if (wi) return entrar(wi);
   const snap = await getDoc(doc(db, cfg.db, user.displayName || user.email));
   snap.exists() ? entrar(snap.data()) : render();
 });
+
+export const cleanup = () => { unsubAuth?.(); $(document).off('.wi'); };

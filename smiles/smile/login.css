@@ -146,7 +146,7 @@
   animation: liFadeUp .35s ease .32s backwards;
 }
 .wilg_btn:hover   { transform: translateY(-.35vh) scale(1.02); box-shadow: 0 1.2vh 3vh var(--bg5);  }
-
+.wilg_btn.inactivo, .wilg_btn:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* LINKS */
 .wilg_links {

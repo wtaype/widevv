@@ -64,7 +64,7 @@ const tareasPreview = [
   { done:false, txt:'🚀 Deploy a Firebase',           color:'#FF5C69' },
 ];
 
-const diasPreview = ['Comp', 'Util', 'Mod', 'Guía', 'Acerca'];
+const diasPreview = ['Componentes', 'Utilidades', 'Modales', 'Guías', 'Acerca'];
 
 // ── PLANTILLAS ────────────────────────────────────────────────
 const tplStat = s => `
