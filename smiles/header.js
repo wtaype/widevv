@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import { rutas } from './rutas/ruta.js';
-import { getls, removels, Mensaje, wiAuth } from './widev.js';
-import { auth, signOut } from './auth/wiauth.js';
+import { Mensaje, wiAuth } from './widev.js';
 
 // VISTA PERSONAL_________________________________
 export const personal = wi => {
@@ -16,7 +15,11 @@ export const personal = wi => {
 
 // VISTA PUBLICA_________________________________
 const publico = () => {
-  $('.nv_right').html('');
+  // $('.nv_right').html(`
+  //   <a href="/descubre" class="nv_item" data-page="descubre"><i class="fa-solid fa-gauge"></i> <span>Descubre </span></a>
+  //   <button class="bt_auth registrar"><i class="fas fa-user-plus"></i><span>Registrar</span></button>
+  //   <button class="bt_auth login"><i class="fas fa-sign-in-alt"></i><span>Login</span></button>  
+  // `);
 };
 
 // MI AUTH_________________________________
@@ -26,6 +29,9 @@ const wi = wiAuth.user; wi ? personal(wi) : publico();
 // SALIR_________________________________
 const KEEP_KEYS = ['wiTema', 'wiSmart', 'wiFresh'];
 $(document).on('click.hdr', '.bt_salir', async () => {
-  try { await signOut(auth); } catch(e) { console.error('signOut:', e); }
-  wiAuth.logout(KEEP_KEYS);
+  const { salir } = await import('./smile/login.js');
+  salir(KEEP_KEYS);
 });
+
+// Preload: registra handler .login/.registrar
+import('./smile/login.js');

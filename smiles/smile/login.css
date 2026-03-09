@@ -163,8 +163,39 @@
 .wilg_links span:hover  { color: var(--hva); background: var(--bg4); transform: translateY(-.2vh); }
 .wilg_links span:hover::after { width: 75%; }
 
+/* ==================== 6. MODAL OVERLAY ==================== */
+.wilg_mod .modalBody {
+  max-width: 28vw; min-width: 320px; padding: 0;
+  background: var(--wb); border-radius: 2.4vh;
+  box-shadow: 0 2vh 6vh rgba(0,0,0,.2); border: 1px solid var(--brd);
+  animation: liEntrar var(--tr_m) cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+.wilg_mod_reg .modalBody { max-width: 42vw; }
+
+.wilg_mod .modalX {
+  position: absolute; top: 1.5vh; right: 1.5vh;
+  background: var(--bg4); color: var(--tx2); border: none;
+  width: 3.5vh; height: 3.5vh; border-radius: 50%;
+  font-size: var(--fz_m3); cursor: pointer;
+  transition: all var(--tr_f);
+  display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+.wilg_mod .modalX:hover { background: var(--mco); color: var(--txa); transform: rotate(90deg) scale(1.1); }
+
+.wilg_mod #liForm {
+  padding: 3.5vh 2.5vw 3vh;
+  display: flex; flex-direction: column; gap: 1.5vh;
+  background: var(--bg);
+}
+.wilg_mod p { color: var(--tx); font-size: var(--fz_m2); margin: 1vh 0 1.5vh; opacity: .9; font-weight: 500; text-align: center; }
+
 /* ==================== RESPONSIVE ==================== */
-@media (max-width: 1200px) { .wilg_card { max-width: 36vw; } }
+@media (max-width: 1200px) {
+  .wilg_card { max-width: 36vw; }
+  .wilg_mod .modalBody { max-width: 36vw; }
+  .wilg_mod_reg .modalBody { max-width: 52vw; }
+}
 
 @media (max-width: 768px) {
   .wilg_wrap  { padding-top: 4vh; padding-inline: 4vw; }
@@ -173,10 +204,14 @@
   .wilg_grid  { grid-template-columns: 1fr; }
   .wilg_links { flex-direction: column; }
   .wilg_links span { width: 100%; text-align: center; }
+  .wilg_mod .modalBody { max-width: 95vw; min-width: auto; }
+  .wilg_mod_reg .modalBody { max-width: 95vw; }
+  .wilg_mod #liForm { padding: 3vh 4vw; }
 }
 
 @media (max-width: 480px) {
   .wilg_wrap { padding-top: 2vh; }
   #liForm  { padding: 2.5vh 4vw; }
   .wilg_logo { width: 7.5vh; height: 7.5vh; }
+  .wilg_mod #liForm { padding: 2.5vh 3vw; }
 }
